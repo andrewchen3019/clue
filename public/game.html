@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/diceStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" />
+</head>
+<body>
+    <div class="modal" id="disconnect-modal">
+        <div class="modal-content">
+            <h1><i class="fas fa-exclamation-triangle yellow"></i> <span id="disconnect-message">You have been disconnected</span></h1>
+            <p> You might have left the game for too long, or check you internet connection. Something might be wrong on our end. </p>
+        </div>
+    </div>
+    <div class="whole-container">
+        <h1 id="cannot-join-error">
+            Sorry, the game has already started and you cannot join. 
+        </h1>
+        <div id="not-container">
+            <h1>Pick a player</h1>
+            <div class="choices">
+                Loading...
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <table class="notepad animate__animated animate__backInUp">
+            <tr><td id="x-td"><span id="notepad-x"><i class="fas fa-times"></i></span></td></tr>
+            <tr><th class="title-name">WHO?</th><td id="selection-td"><select name="symbol-select" id="symbol-select">
+                <option value="<i class='fas fa-times'></i>" selected>x</option>
+                <option value="<i class='fas fa-check'></i>">checkmark</option>
+                <option value="<i class='far fa-circle'></i>">circle</option>
+            </select></td></tr>
+            <tr>
+                <td class="name">Green</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Mustard</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Orchid</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Peacock</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Plum</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Scarlett</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr><th class="title-name">WHAT?</th></tr>
+            <tr>
+                <td class="name">Candlestick</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Dagger</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Leadpipe</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Revolver</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Rope</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Wrench</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr><th class="title-name">WHERE?</th></tr>
+            <tr>
+                <td class="name">Ballroom</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Billard Room</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Conservatory</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Dining Room</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Hall</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Kitchen</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Library</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Lounge</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="name">Study</td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+        </table>
+        <div class="modal" id="suggest-modal">
+        </div>
+        <div id="suggest-picker">
+            <span id="suggest-x"><i class="fas fa-times"></i></span><h1 id="suggest-heading">Suggest</h1>
+            <div id="suggest-content">
+                <div class="suggestion-row" id="suspect-row">
+                    <button class="arrow-suggest" id="arrow-left-people"><i class="fas fa-chevron-left fa-2x"></i></button>
+                    <div class="suggest-part-transparent" id="left-area-people">
+                        <img src="images/Green.png" alt="" height="200">
+                    </div>
+                    <div class="suggest-roll" id="people-suggest-row">
+                        <div class="image-choice suggestion-image people-image" id="Green"><img src="images/Green.png" alt="Green" height="200"></div>
+                    </div>
+                    <div class="suggest-part-transparent" id="right-area-people">
+                        <img src="images/Green.png" alt="" height="200">
+                    </div>
+                    <button class="arrow-suggest" id="arrow-right-people"><i class="fas fa-chevron-right fa-2x"></i></button>
+                </div>
+                <div class="suggestion-row" id="weapon-row">
+                    <button class="arrow-suggest" id="arrow-left-weapon"><i class="fas fa-chevron-left fa-2x"></i></button>
+                    <div class="suggest-part-transparent" id="left-area-weapon">
+                        <img src="images/Green.png" alt="" height="200">
+                    </div>
+                    <div class="suggest-roll" id="weapon-suggest-row">
+                        <div class="image-choice suggestion-image weapon-image" id="Green"><img src="images/Green.png" alt="Green" height="200"></div>
+                    </div>
+                    <div class="suggest-part-transparent" id="right-area-weapon">
+                        <img src="images/Green.png" alt="" height="200">
+                    </div>
+                    <button class="arrow-suggest" id="arrow-right-weapon"><i class="fas fa-chevron-right fa-2x"></i></button>
+                </div>
+                <div class="suggested" id="place-suggested">
+                    <div class="image-choice" id="DiningRoom"><img src="images/DiningRoom.png" alt="" height="200"></div>
+                </div>
+            </div>
+    
+            <button id="suggest-now" class="suggest-button">Suggest</button>
+        </div>
+        <div id="reveal-place">
+            <h1 id="reveal-heading">Reveal a place</h1>
+            <div class="suggestion-row">
+                <div class="arrow-suggest" id="arrow-left-place"><i class="fas fa-chevron-left fa-2x"></i></div>
+                <div class="suggest-part-transparent" id="left-area-place">
+                    <img src="images/Green.png" alt="" height="200">
+                </div>
+                <div class="suggest-roll" id="place-suggest-row">
+                    <div class="image-choice suggestion-image place-image" id="Green"><img src="images/Green.png" alt="Green" height="200"></div>
+                </div>
+                <div class="suggest-part-transparent" id="right-area-place">
+                    <img src="images/Green.png" alt="" height="200">
+                </div>
+                <button class="arrow-suggest" id="arrow-right-place"><i class="fas fa-chevron-right fa-2x"></i></button>
+            </div>
+            <button id="reveal-place-submit" class="suggest-button">Go</button>
+        </div>
+        <div id="user-picker">
+            <h1>Pick a user</h1>
+            <form action="" id="pick-user-form">
+                <select name="" id="pick-user-select">
+                    <option value="John Doe">John Doe</option>
+                </select>
+                <button id="user-picker-submit" class="suggest-button" type="submit">Go</button>
+            </form>
+        </div>
+        <div id="accuse-container">
+            <h1 id="accuse-username">John Doe Accuses: </h1>
+            <h2 class="accuse-label" id="suspect-accuse">Green</h2>
+            <h2 class="accuse-label" id="weapon-accuse">Dagger</h2>
+            <h2 class="accuse-label" id="place-accuse">Conservatory</h2>
+            <img src="images/ClueEnvelope.png" alt="" height="200" width="130" id="envelope">
+            <div id="suspect-envelope" class="envelope-card">
+                <img src="images/Green.png" alt="" height="200" width="130" >
+            </div>
+            <div id="weapon-envelope" class="envelope-card">
+                <img src="images/Green.png" alt="" height="200" width="130" >
+            </div>
+            <div id="place-envelope" class="envelope-card">
+                <img src="images/Green.png" alt="" height="200" width="130" >
+            </div>
+        </div>
+        <div class="main-container cover-photo">
+            <div class="very-big-container">
+                <div id="users-container">
+                    <h3>Users</h6>
+                    <ul id="users">
+                        Loading...
+                    </ul>
+                </div>
+                <div class="modal" id="dice-modal">
+                    <div class="modal-content">
+                        <button class="x" id="dice-x"><i class="fas fa-times-circle"></i> Close</button>
+                        <h2>Roll Dice</h2>
+                        <div class="dice">
+                            <ol class="die-list even-roll" data-roll="1" id="die-1">
+                              <li class="die-item" data-side="1">
+                              </li>
+                              <li class="die-item" data-side="2">
+                              </li>
+                              <li class="die-item" data-side="3">
+                              </li>
+                              <li class="die-item" data-side="4">
+                              </li>
+                              <li class="die-item" data-side="5">
+                              </li>
+                              <li class="die-item" data-side="6">
+                              </li>
+                            </ol>
+                            <ol class="die-list odd-roll" data-roll="1" id="die-2">
+                              <li class="die-item" data-side="1">
+                              </li>
+                              <li class="die-item" data-side="2">
+                              </li>
+                              <li class="die-item" data-side="3">
+                              </li>
+                              <li class="die-item" data-side="4">
+                              </li>
+                              <li class="die-item" data-side="5">
+                              </li>
+                              <li class="die-item" data-side="6">
+                              </li>
+                            </ol>
+                          </div>
+                        <h2 id="steps">0 steps</h2>
+                        <h3 id="clues"></h3>
+                    </div>
+                </div>
+                <div class="board">
+                    <div id="suggest-display" class="msg">
+                        <p id="suggestion-label"> Abigail suggests: </p>
+                        <div id="suggestion-images">
+                            <div class="image-choice"><img src="images/Green.png" alt="" height="200"></div>
+                            <div class="image-choice"><img src="images/Dagger.png" alt="" height="200"></div>
+                            <div class="image-choice"><img src="images/DiningRoom.png" alt="" height="200"></div>
+                        </div>
+                    </div>
+                    <div class="msg" id="rolled-display">
+                        <p id="rolled-label">John Doe rolled: </p>
+                        <div id="dice-images">
+                            Loading...
+                        </div>
+                    </div>
+                    <div id="place-display-container">
+                        <div class="msg" id="place-display">
+                            <p id="place-name">Lounge</p>
+                            <div id="place-buttons">
+                                <button id="accuse" class="green-btn">Accuse</button>
+                                <button id="suggest" class="green-btn"><i class="fas fa-comments"></i> Suggest</button>
+                                <button id="secret-passage" class="green-btn secret-passage"><i class="fas fa-door-open"></i> Secret passage to Bathroom</button>
+                                <button id="clue-secret-passage" class="green-btn secret-passage"><i class="fas fa-door-open"></i> Secret passage to Bathroom</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="clue-bigger-container">
+                        <div class="msg" id="clue-container">
+                            <div>
+                                <h2 id="flip-message">Flip a clue card</h2>
+                                <div id="clue-card-image">
+                                    <div id="clue-card-inner">
+                                      <div id="clue-card-front">
+                                        <img src="images/clue_card_back.png" alt="" height="200">
+                                      </div>
+                                      <div id="clue-card-back">
+                                        <img src="images/clue_card_back.png" alt="" height="200">
+                                      </div>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="controls">
+                        <div id="real-controls">
+                            <div id="arrows">
+                                <div class="white-space"></div>
+                                <button class="arrow" id="arrow-up"><i class="fas fa-chevron-circle-up"></i></button>
+                                <div class="white-space"></div>
+
+                                <button class="arrow" id="arrow-left"><i class="fas fa-chevron-circle-left"></i></button>
+                                <div class="white-space"></div>
+                                <button class="arrow" id="arrow-right"><i class="fas fa-chevron-circle-right"></i></button>
+
+                                <div class="white-space"></div>
+                                <button class="arrow" id="arrow-down"><i class="fas fa-chevron-circle-down"></i></button>
+                                <div class="white-space"></div>
+                        </div>
+                        <div id="other-buttons">
+                            <div id="steps-left"></div>
+                            <button id="start-over"><i class="fas fa-undo"></i>Start Over</button>
+                            <button id="submit-position">Submit</button>
+                        </div>
+                        </div>
+
+
+                    </div>
+                    <div id="zoom-controls">
+                        <button id="zoom-in" class="zoom-button"><i class="fas fa-plus"></i></button>
+                        <button id="zoom-out" class="zoom-button"><i class="fas fa-minus"></i></button>
+                    </div>
+                    <div id="canvas-container" class="dragscroll">
+                        <canvas id="board-canvas" height="780" width="780"></canvas>
+                    </div>
+
+                </div>
+                <div id="right-content">
+                    <div id="game-header">
+                        <h2 id="game-status"><img src="images/CLUE_logo.png" alt="" height="75"></h2>
+                        <button id="start-game" class="green-btn">Start Game</button>
+
+                        <button id="leave-game">End Game</button>
+                    </div>
+                    <div id="error">Not enough players to start</div>
+    
+                    <div id="game-content">
+                        <h3 id="has-show">You have something to show John Doe</h3>
+                        <div id="card-roll">
+                            Loading...
+                        </div>
+                        <div class="grid-2">
+                            <div><button id="show-dice" class="green-button"><i class="fas fa-dice"></i> Roll the dice</button></div>
+                            <div><button id="end-turn" class="green-button"> End Turn </button> </div>
+                            <div><button id="view-notes"><i class="far fa-sticky-note"></i> View Notes</button></div>
+                        </div>
+
+                    </div>
+                    <button id="chat-toggle"><i class="fas fa-comments"></i> <span id="hide-or-show-chat">Show</span> Chat <i class="fas fa-chevron-down" id="chat-chevron"></i> <span id="notification-number"></span></button>
+                    <div id="chat">
+                        <div id="is-typing">Andrew is typing...</div>
+                        <div id="chat-container">
+                        </div>
+                        <form action="" id="chat-form">
+                            <div class="selection">
+                                To: <select name="to" id="to-input">
+                                    <option value="Everyone" selected>Everyone</option>
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <input type="text" placeholder="Hi etc." id="chat-input" required>
+                                <button type="submit" id="chat-submit"><i class="fas fa-paper-plane"></i> Send</button>
+                            </div>
+
+                        </form>
+                    </div> 
+                     <h3>Log</h3>
+                    <div id="log">
+                        
+                    </div>
+                    
+                </div>
+    
+            </div>
+        </div>
+        <div id="resources">
+            <img src="images/Mustard-icon.png" alt="" class="resource" id="mustard-icon">
+            <img src="images/Plum-icon.png" alt="" class="resource" id="plum-icon">
+            <img src="images/Scarlett-icon.png" alt="" class="resource" id="scarlett-icon">
+            <img src="images/Orchid-icon.png" alt="" class="resource" id="orchid-icon">
+            <img src="images/Peacock-icon.png" alt="" class="resource" id="peacock-icon">
+            <img src="images/Green-icon.png" alt="" class="resource" id="green-icon">
+            <img src="images/ClueBoard.png" alt="" class="resource" id="board-img">
+            <audio src="sounds/dice.wav" id="dice-sound"></audio>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js" integrity="sha512-/ncZdOhQm5pgj5KHy720Ck7XF5RzYK6rtUsLNnGcitXrKT3wUYzTrPlOSG7SdL2kDzkuLEOFvrQRyllcZkeAlg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
+    integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
+    crossorigin="anonymous"
+  ></script>
+  <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
